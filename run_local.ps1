@@ -2,10 +2,13 @@
 Get-Content .env | ForEach-Object {
     $line = $_.Trim()
     if ($line -and !$line.StartsWith("#")) {
-        $key, $value = $line.Split('=', 2)
-        $key = $key.Trim()
-        $value = $value.Trim().Trim('"')
-        Set-Item -Path "env:$key" -Value $value
+        $lineWithoutComment = $line.Split('#')[0].Trim() # Remove inline comments
+        if ($lineWithoutComment) {
+            $key, $value = $lineWithoutComment.Split('=', 2)
+            $key = $key.Trim()
+            $value = $value.Trim().Trim('"')
+            Set-Item -Path "env:$key" -Value $value
+        }
     }
 }
 

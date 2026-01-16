@@ -1,6 +1,6 @@
 #!/bin/bash
 # Load variables from .env
-export $(grep -v '^#' .env | xargs)
+export $(sed 's/#.*//' .env | grep -v '^$' | xargs)
 
 # Stop existing container if running
 docker rm -f capstone-clock 2>/dev/null

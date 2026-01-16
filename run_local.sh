@@ -1,6 +1,6 @@
 #!/bin/bash
 # Load variables from .env
-export $(grep -v '^#' .env | xargs)
+export $(sed 's/#.*//' .env | grep -v '^$' | xargs)
 
 echo "🚀 Starting Capstone Clock on Local Network ($LOCAL_IP)..."
 
