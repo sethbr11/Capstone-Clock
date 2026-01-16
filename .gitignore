@@ -4,9 +4,6 @@
 /server/node_modules
 /.pnp
 .pnp.js
-package-lock.json
-client/package-lock.json
-server/package-lock.json
 
 # Testing
 /coverage
@@ -25,10 +22,10 @@ yarn-debug.log*
 yarn-error.log*
 
 # Credentials
-*.json
 credentials/
 credentials.json
 *.pem
 
 # Environment
 .env
+
