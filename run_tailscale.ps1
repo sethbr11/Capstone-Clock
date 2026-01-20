@@ -18,11 +18,16 @@ Write-Host "🔒 Starting Capstone Clock on Tailscale ($env:TAILSCALE_IP)..." -F
 docker rm -f capstone-clock 2>$null
 
 # Run
-docker run -d `
+$dockerResult = docker run -d `
   -p "${env:TAILSCALE_IP}:8501:3001" `
   --name capstone-clock `
   -v "${PWD}/${env:CREDS_FILE}:/app/${env:CREDS_FILE}" `
   -v "${PWD}/.env:/app/.env" `
   capstone-clock
 
-Write-Host "✅ Secure! Access at http://${env:TAILSCALE_IP}:8501" -ForegroundColor Green
+if ($LASTEXITCODE -eq 0) {
+  Write-Host "✅ Secure! Access at http://${env:TAILSCALE_IP}:8501" -ForegroundColor Green
+} else {
+  Write-Host "❌ Failed to start container. Make sure Tailscale is up and running!" -ForegroundColor Red
+  exit 1
+}
