@@ -18,25 +18,7 @@ const Sidebar = () => {
             </nav>
             <div className="sidebar-footer">
                 <div className="total-hours">
-                    <h2>Total Hours</h2>
                     {(() => {
-                        const currentSessionHours = currentSessionDuration ? currentSessionDuration / 3600 : 0;
-                        const displayTotalHours = totalHours + currentSessionHours;
-                        const [hoursStr, minutesStr] = formatDuration(displayTotalHours).split(' ');
-                        const minutesVal = minutesStr.replace('m', '');
-                        
-                        return (
-                            <p>
-                                {hoursStr} {minutesVal}
-                                <span className={isClockedIn ? "flash" : ""}>m</span>
-                            </p>
-                        );
-                    })()}
-                </div>
-                
-                <div className="hours-goal" style={{ marginTop: '1rem' }}>
-                     <h2>Weekly Pace</h2>
-                     {(() => {
                         // Constants
                         const GOAL_HOURS = 150;
                         const DEADLINE = new Date('2026-04-09');
@@ -45,22 +27,28 @@ const Sidebar = () => {
                         // Calculate Current Total
                         const currentSessionHours = currentSessionDuration ? currentSessionDuration / 3600 : 0;
                         const displayTotalHours = totalHours + currentSessionHours;
+                        
+                        // Format Duration
+                        const [hoursStr, minutesStr] = formatDuration(displayTotalHours).split(' ');
+                        const minutesVal = minutesStr.replace('m', '');
 
-                        // Calculate Remaining
+                        // Calculate Pace
                         const hoursRemaining = GOAL_HOURS - displayTotalHours;
                         const daysRemaining = differenceInDays(DEADLINE, now);
                         const weeksRemaining = daysRemaining / 7;
-
-                        // Calculate Pace
                         const hoursPerWeek = weeksRemaining > 0 ? hoursRemaining / weeksRemaining : 0;
-                        
-                        // Formatting
                         const formattedPace = hoursPerWeek > 0 ? hoursPerWeek.toFixed(1) : "0.0";
-
+                        
                         return (
-                            <p title={`Goal: ${GOAL_HOURS}h by Apr 9`}>
-                                {formattedPace} h/week
-                            </p>
+                            <div className="total-hours-display">
+                                <p className="hours-text">
+                                    {hoursStr} {minutesVal}
+                                    <span className={isClockedIn ? "flash" : ""}>m</span>
+                                </p>
+                                <p className="pace-text" title={`Goal: ${GOAL_HOURS}h by Apr 9`}>
+                                    <strong>Weekly Pace:</strong> {formattedPace} h/week
+                                </p>
+                            </div>
                         );
                      })()}
                 </div>

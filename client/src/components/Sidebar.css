@@ -35,6 +35,19 @@
     text-align: center;
 }
 
+.hours-text {
+    font-size: 3.5rem;
+    font-weight: bold;
+    margin: 0;
+    line-height: 1.2;
+}
+
+.pace-text {
+    font-size: 0.9rem;
+    color: #aaa; /* Lighter text */
+    margin: 0.2rem 0 0 0;
+}
+
 @keyframes flash {
     0% { opacity: 1; }
     50% { opacity: 0; }
