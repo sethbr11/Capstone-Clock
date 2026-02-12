@@ -10,6 +10,7 @@ export const TimeProvider = ({ children }) => {
     const [isClockedIn, setIsClockedIn] = useState(false);
     const [startTime, setStartTime] = useState(null);
     const [totalHours, setTotalHours] = useState(0);
+    const [currentSessionDuration, setCurrentSessionDuration] = useState(0);
     const [loading, setLoading] = useState(true);
 
     const fetchData = useCallback(async () => {
@@ -39,6 +40,20 @@ export const TimeProvider = ({ children }) => {
     useEffect(() => {
         fetchData();
     }, [fetchData]);
+
+    useEffect(() => {
+        let interval;
+        if (isClockedIn && startTime) {
+            interval = setInterval(() => {
+                const now = new Date();
+                const seconds = differenceInSeconds(now, startTime);
+                setCurrentSessionDuration(seconds);
+            }, 1000);
+        } else {
+            setCurrentSessionDuration(0);
+        }
+        return () => clearInterval(interval);
+    }, [isClockedIn, startTime]);
 
     const calculateTotalHours = (data) => {
         const total = data.reduce((acc, entry) => {
@@ -93,7 +108,7 @@ export const TimeProvider = ({ children }) => {
     };
 
     return (
-        <TimeContext.Provider value={{ entries, isClockedIn, startTime, totalHours, loading, clockIn, clockOut, addManualEntry, addLegacyHours, fetchData }}>
+        <TimeContext.Provider value={{ entries, isClockedIn, startTime, totalHours, currentSessionDuration, loading, clockIn, clockOut, addManualEntry, addLegacyHours, fetchData }}>
             {children}
         </TimeContext.Provider>
     );

@@ -94,6 +94,7 @@
     width: 100%;
     height: 100px;
     padding: 0.5rem;
+    font-size: 1rem; /* Prevent zoom on mobile */
     border-radius: 5px;
     border: 1px solid var(--border-color);
     background-color: var(--secondary-bg);

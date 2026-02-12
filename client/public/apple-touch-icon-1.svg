@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="512" height="512">
+  <defs>
+    <style>
+      .circle {
+        fill: none;
+        stroke: #4CAF50;
+        stroke-width: 8;
+      }
+      .hand {
+        stroke: #4CAF50;
+        stroke-width: 6;
+        stroke-linecap: round;
+      }
+    </style>
+  </defs>
+  <circle class="circle" cx="50" cy="50" r="45"/>
+  <line class="hand" x1="50" y1="50" x2="50" y2="25"/>
+  <line class="hand" x1="50" y1="50" x2="70" y2="50"/>
+</svg>
