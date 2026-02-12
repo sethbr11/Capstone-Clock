@@ -23,17 +23,17 @@
 .form-row {
     display: flex;
     gap: 0.5rem;
-    align-items: flex-end; /* Align items to the bottom for a cleaner look */
+    align-items: flex-end;
 }
 
 .form-row .form-group {
-    flex: 1; /* Each group takes equal width */
-    min-width: 0; /* Prevent flexbox overflow issues */
+    flex: 1;
+    min-width: 0;
 }
 
 .form-group label {
     margin-bottom: 0.5rem;
-    text-align: left; /* Ensure labels are left-aligned */
+    text-align: left;
 }
 
 
@@ -44,14 +44,17 @@
     background-color: var(--secondary-bg);
     color: var(--text-color);
     font-size: 1rem;
-    font-family: inherit; /* Ensure consistent font */
+    font-family: inherit;
     box-sizing: border-box;
     width: 100%;
+    -webkit-appearance: none;
+    appearance: none;
+    min-width: 0;
 }
 
 .manual-form textarea {
     height: 100px;
-    resize: vertical; /* Allow user to resize vertically */
+    resize: vertical;
 }
 
 @media (max-width: 768px) {
@@ -61,26 +64,21 @@
     }
 
     .form-row {
-        /* Revert to row layout, adjust gap */
-        gap: 1.5rem; /* Increased gap for better spacing */
-        align-items: flex-start; /* Align items to the top for consistency */
+        gap: 1.5rem;
+        align-items: flex-start;
     }
 
     .form-row .form-group {
-        /* Keep default flex: 1 behavior for equal sharing of space */
-        /* The input's max-width will control its size */
         flex: 1;
         min-width: 0;
-        /* Revert display, flex-direction, align-items from previous attempt */
     }
 
     .form-row .form-group label {
-        text-align: left; /* Ensure labels are left-aligned */
+        text-align: left;
     }
 
     .form-row .form-group input {
-        max-width: 150px; /* Constrain the width of the input field */
-        /* Removed margin: 0 auto; as we want left alignment for the input within its flex:1 container*/
+        width: 100%;
     }
 }
 

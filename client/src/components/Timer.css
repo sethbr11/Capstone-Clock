@@ -25,23 +25,22 @@
     border-radius: 10px;
     cursor: pointer;
     transition: background-color 0.3s;
-    /* width: 100%; */ /* No longer full width by default */
     max-width: 300px;
     color: white;
 }
 
 .btn.primary {
     background-color: var(--secondary-color);
-    --glow-color: var(--secondary-color); /* Red glow */
+    --glow-color: var(--secondary-color); 
 }
 
 .btn.secondary {
     background-color: var(--primary-color);
-    --glow-color: var(--primary-color); /* Green glow */
+    --glow-color: var(--primary-color); 
 }
 
 .btn.default {
-    background-color: #495057; /* Darker gray for better contrast */
+    background-color: #495057; 
 }
 
 .glow {
@@ -81,25 +80,25 @@
     gap: 1rem;
     width: 100%;
     max-width: 400px;
-    padding: 1rem; /* Add padding to the form */
-    background-color: var(--secondary-bg); /* Add a background to the form */
-    border-radius: 8px; /* Slightly rounded corners */
+    padding: 1rem; 
+    background-color: var(--secondary-bg); 
+    border-radius: 8px; 
 }
 
 .notes-form h3 {
-    margin-bottom: 0.5rem; /* Add space below the title */
+    margin-bottom: 0.5rem; 
 }
 
 .notes-form textarea {
     width: 100%;
     height: 100px;
     padding: 0.5rem;
-    font-size: 1rem; /* Prevent zoom on mobile */
+    font-size: 1rem; 
     border-radius: 5px;
     border: 1px solid var(--border-color);
     background-color: var(--secondary-bg);
     color: var(--text-color);
-    box-sizing: border-box; /* Ensures padding doesn't affect width */
+    box-sizing: border-box; 
 }
 
 .form-buttons {
@@ -109,7 +108,7 @@
 }
 
 .notes-form .btn {
-    width: auto; /* Allow buttons to size to their content */
+    width: auto; 
     padding: 0.8rem 1.5rem;
     font-size: 1rem;
 }

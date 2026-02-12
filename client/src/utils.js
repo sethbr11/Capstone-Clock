@@ -5,7 +5,8 @@ export const formatDuration = (decimalHours) => {
     const totalMinutes = Math.round(decimalHours * 60);
     const hours = Math.floor(totalMinutes / 60);
     const minutes = totalMinutes % 60;
-    return `${hours}h ${minutes}m`;
+    const minutesStr = minutes < 10 ? `0${minutes}` : minutes;
+    return `${hours}h ${minutesStr}m`;
 };
 
 export const roundDuration = (totalSeconds) => {

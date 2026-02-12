@@ -46,7 +46,7 @@ const Sidebar = () => {
                                     <span className={isClockedIn ? "flash" : ""}>m</span>
                                 </p>
                                 <p className="pace-text" title={`Goal: ${GOAL_HOURS}h by Apr 9`}>
-                                    <strong>Weekly Pace:</strong> {formattedPace} h/week
+                                    <strong>Required Pace:</strong> {formattedPace} h/week
                                 </p>
                             </div>
                         );
